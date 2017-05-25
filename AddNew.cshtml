@@ -1,0 +1,50 @@
+﻿@model TestAppMVCAndCRM.Models.AccountEntityModels
+@{
+    ViewBag.Title = "AddNew";
+}
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>
+                <table>
+                    <tr>
+                        <td width="150px">Account Name</td>
+                        <td>
+                            @Html.HiddenFor(m => m.AccountID)
+                            @Html.EditorFor(m => m.AccountName)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Number of Employees</td>
+                        <td>
+                            @Html.EditorFor(m => m.NumberOfEmployees)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td width="150px">Revenue</td>
+                        <td>
+                            @Html.EditorFor(m => m.Revenue)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Primary Contact</td>
+                        <td>
+                            @Html.DropDownListFor(model => model.PrimaryContact.Id , (SelectList)ViewBag.EntityReferenceUsers)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Save" />
+                            <br />
+                        </td>
+                       
+                        @Html.ActionLink("Back to List", "Index")
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+}

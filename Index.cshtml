@@ -1,0 +1,106 @@
+﻿@model TestAppMVCAndCRM.Models.AccountEntityModels
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<table>
+
+    <tr>
+        @Html.ActionLink("AddNew", "AddNew", "AddNew",null, null)
+    </tr>
+
+
+    <tr>
+
+        <td>
+
+            <table border="0" cellpadding="4" cellspacing="1" bgcolor="#D8D8D8" class="main_txt">
+
+                <tr>
+
+                    <td width="100" align="center" class="header_bg">
+                        <a href="">
+                            Account name
+                        </a>
+                    </td>
+
+
+                    <td width="80" align="center">
+                        <a href="">
+                            Number of Employees
+                        </a>
+                    </td>
+
+
+                    <td width="80" align="center">
+                        <a href="">
+                            Revenue
+                        </a>
+                    </td>
+
+
+                    <td width="70" align="center">
+                        <a href="">
+                            Primary Contact
+                        </a>
+                    </td>
+
+
+                    <td width="120" align="center" class="header_bg">Action</td>
+
+                </tr>
+
+
+                @{
+                    string COLOR1 = "#ffffff";
+                    string COLOR2 = "#f1f1f1";
+                    string bgcolor = "#ffffff";
+                }
+
+                @foreach (var x in ViewBag.accountinfo)
+                {
+                    bgcolor = bgcolor == COLOR1 ? COLOR2 : COLOR1;
+
+
+                    <tr bgcolor="@bgcolor">
+
+
+                        <td>
+                            @x.AccountName
+                        </td>
+
+
+                        <td>
+                            @x.NumberOfEmployees
+                        </td>
+
+
+                        <td>
+                            @x.RevenueValue
+                        </td>
+
+
+                        <td>
+                            @x.PrimaryContactName
+                        </td>
+
+
+                        <td>
+                            @*<a href="~/Home/Delete/@x.AccountID">Delete Account </a>*@
+                            @*<a href="~/Home/Delete/@x.AccountID">Delete Account </a>*@
+                            @*<a href="~/Home/Edit/@x.AccountID">Edit Account </a>*@
+                            @Html.ActionLink("Delete", "Delete", "Delete", new { accountId = x.AccountID },null)
+                            @Html.ActionLink("EditAccount", "Edit","Edit", new { accountId = x.AccountID },null)
+
+                        </td>
+
+                    </tr>
+
+                }
+            </table>
+
+        </td>
+
+    </tr>
+
+</table>
